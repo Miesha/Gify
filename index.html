@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Giphy</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="gify.css">
+</head>
+
+
+<div class="jumbotron">
+    <h1 class="display-4">Cartoon Gify Search</h1>
+    <p class="lead">Find your favorite cartoon gifs here! Add them to your page to be viewed at any time. </p>
+    <hr class="my-4">
+    <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
+   
+        <form class="form-inline">
+          <input id="toonName" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button id="gifySearch" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </nav>
+  
+  </div>
+  
+  <div id="button-view">
+      
+  </div>
+  <div id="gify-view">
+      put gifs here     
+  </div>
+
+<body>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+
+var cartoon = [];
+//Working button that stores cartoon name in variable. 
+    $("#gifySearch").on("click", function(event) {
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    // Storing the artist name
+    var cartoonName = $("#toonName").val().trim();
+    console.log(cartoonName);
+
+    cartoon.push(cartoonName);
+    console.log(cartoon);
+    
+
+    renderButtons();
+    // searchCartoon(cartoonName);
+    
+  });
+
+  function renderButtons() {
+
+// Deleting the movies prior to adding new movies
+// (this is necessary otherwise we will have repeat buttons)
+ $("#button-view").empty();
+
+// Looping through the array of movies
+for (var i = 0; i < cartoon.length; i++) {
+
+  // Then dynamicaly generating buttons for each movie in the array
+  // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
+  var a = $("<button>");
+  // Adding a class of movie to our button
+  a.addClass("toon");
+  // Adding a data-attribute
+  a.attr("data-name", cartoon[i]);
+  // Providing the initial button text
+  a.text(cartoon[i]);
+  // Adding the button to the HTML
+  $("#button-view").append(a);
+}
+  }
+    // var cartoon = [];   
+    // var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=0mw4WdH063hQ0pIUngjzI5UoXPkw2pIG";
+
+    // var cartoon = [];
+
+    // $.ajax({
+    //   url: queryURL,
+    //   method: "GET"
+    // }).then(function(response) {
+    //   console.log(response);
+
+     
+    // });
+  </script>
+
+</body>
+
+</html>
