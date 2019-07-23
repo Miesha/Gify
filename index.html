@@ -22,7 +22,9 @@
 
   <div id="button-view"></div>
 
-  <div id="gify-view"></div>
+  <div id="gify-view">
+      here
+  </div>
 
 <body>
 
@@ -91,10 +93,20 @@ var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + cartoon + "&api_key=0m
       console.log(response);
     //   JSON.stringify(response);
 
-     
-    //  var gifDiv = $("<div class= 'gifDisplay'>");
+    for (var i = 0; i < response.length; i++) { 
+    // var gifDiv = $("<div class='gifDisplay'>");
 
-    //  var rating = response.
+    var rating = response.data.rating[i];
+    
+    var cap = $("<p>").text("Rating : " + rating);
+    console.log(rating);
+
+   
+
+    $("#gify-view").prepend(cap);
+
+    }
+
      
    });
 
